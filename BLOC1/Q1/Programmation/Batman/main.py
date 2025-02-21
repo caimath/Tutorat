@@ -6,6 +6,7 @@ Le but de cet examen est de montrer que tu connais les bases de python et que tu
 
 Comment gagner des points ? En leur montrant ce que tu sais faire: Ouverture de fichier, boucle, condition, fonction, dictionnaire,...
 
+- Avoir une syntaxe commune pour la déclaraiton  de variable (CamelCase, "_" pour séparer,...)
 - Quand tu ouvres un fichier, il faut bien le refermer après utilisation.
 - Tu dois coder une fonction pour chaque paragraphe en général.
 - Essayer de gérer les erreurs que l'utilisateur pourrait faire et essayer d'envisager tout les cas (utilisaion de try except et if elif else), si il rentre une mauvaise valeur, tu dois lui redemander de rentrer une valeur correcte.
@@ -30,7 +31,7 @@ dictio = {"batmobile": "Voiture de Batman",
 
 # BAT FONCTION
 # Fct qui prend en paramètre un nom de gadget et renvoie sa description
-def analyse_gadget(nom_gadget: str):
+def analyser_gadget(nom_gadget: str):
 
     # Vérif si le gadget est dans le dictionnaire (Variable globale qu'on a crée au début)
     if nom_gadget in dictio:
@@ -45,15 +46,17 @@ def analyse_gadget(nom_gadget: str):
 def count_gadget():
     occurence = {}
     # Ouvrir fichier avec la permission de lecture car on a pas besoin d'écrire mais juste de récupérer les données
-    with open("batman_test/bat_registre.txt", "r") as registre:
+    with open("bat_registre.txt", "r") as registre:
         gadgets = registre.readlines() # Fonctions qui renvoie une liste en lisant le fichier --> chaque ligne = un gadget 
 
         for element in gadgets: # Parcourir chaque élément (ligne) de la liste gadgets
             gadget = element.strip().lower() # enlever les espaces et mettre en minuscule pour éviter les doublons (pas sensible à la casse)
-            if gadget in occurence:
-                occurence[gadget] += 1 # si occurence existe déjà: on ajoute + 1 au compteur
-            else:
-                occurence[gadget] = 1 # si occurence existe pas encore la crée et lui met 1 au compteur
+            
+            if gadget != "jokerBox".strip().lower(): # On ne compte pas le gadget jokerBox
+                if gadget in occurence:
+                    occurence[gadget] += 1 # si occurence existe déjà: on ajoute + 1 au compteur
+                else:
+                    occurence[gadget] = 1 # si occurence existe pas encore la crée et lui met 1 au compteur
 
     print(occurence)
 
@@ -131,7 +134,7 @@ def interface():
         choix = int(input("Entrez votre choix: "))
         if choix == 1:
             nom_gadget = str(input("Entrez le nom du gadget: "))
-            analyse_gadget(nom_gadget)
+            analyser_gadget(nom_gadget)
 
         elif choix == 2:
             nom_gadget = str(input("Entrez le nom du gadget: "))
@@ -158,7 +161,7 @@ def interface():
 
         elif choix == 8:
             print("Merci d'avoir utilisé le menu de Batman, à bientôt !")
-            exit()
+            exit() # Quitter le programme proprement
 
         else: # Si l'utilisateur rentre un nombre qui n'est pas dans le menu, on relance l'interface pour qu'il rentre un bon nombre
             print("Mauvais choix, veuillez réessayer: ")
@@ -169,10 +172,9 @@ def interface():
         interface()
 
 
-
 # LANCEMENT DE L'INTERFACE
 if __name__ == '__main__':
     interface()
 
 
-
+# FIN DU PROGRAMME
