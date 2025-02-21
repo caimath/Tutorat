@@ -1,3 +1,7 @@
+import unittest
+import os
+import io
+from unittest.mock import patch
 # Batman l'exam blanc
 
 '''
@@ -43,7 +47,7 @@ def analyser_gadget(nom_gadget: str):
 
 # BAT REGISTRE
 # Fonction qui analyse un fichier et compare le nom des gadgets, comptent le nombre d'occurence des gadgets et ajoute le nombre d'occurence dans un dictionnaire
-def count_gadget():
+def count_gadgets():
     occurence = {}
     # Ouvrir fichier avec la permission de lecture car on a pas besoin d'écrire mais juste de récupérer les données
     with open("bat_registre.txt", "r") as registre:
@@ -81,10 +85,10 @@ def bat_signal():
 
 # GESTION DES GADGETS
 # Fct qui ajoute un gadget dans le dictionnaire
-def ajouter_gadget(nom_gadget: str, description: str):
+def ajouter_gadget(nom_gadget: str, descriptions: str):
 
     if nom_gadget not in dictio: # vérifier si le gadget n'est pas déjà dans le dictionnaire
-        dictio[nom_gadget] = description # ajouter le gadget dans le dictionnaire
+        dictio[nom_gadget] = descriptions # ajouter le gadget dans le dictionnaire
         print("Gadget ajouté avec succès: ")
         print(dictio)
     else:
@@ -138,8 +142,8 @@ def interface():
 
         elif choix == 2:
             nom_gadget = str(input("Entrez le nom du gadget: "))
-            description = str(input("Entrez la description du gadget: "))
-            ajouter_gadget(nom_gadget, description)
+            descriptions = str(input("Entrez la description du gadget: "))
+            ajouter_gadget(nom_gadget, descriptions)
 
         elif choix == 3:   
             nom_gadget = str(input("Entrez le nom du gadget: "))
@@ -154,7 +158,7 @@ def interface():
             afficher_gadgets()
 
         elif choix == 6:
-            count_gadget()
+            count_gadgets()
 
         elif choix == 7:
             bat_signal()
@@ -170,6 +174,60 @@ def interface():
     except ValueError: # Si l'utilisateur rentre autre chose qu'un nombre entier, on relance l'interface pour qu'il rentre un bon nombre
         print("Mauvaise valeur, veuillez réessayer en mettant un nombre entier entre 1 et 8: ")
         interface()
+
+
+class TestExamBlanc23(unittest.TestCase):
+
+    def test_analyser_gadget(self):
+        self.assertEqual(analyser_gadget("grappin"), "Parfait pour escalader les gratte-ciel de Gotham ou attraper un sandwich dans le frigo à distance.")
+        self.assertEqual(analyser_gadget("batarang"), "Idéal pour désarmer les méchants, ou couper la pizza les vendredis soirs.")
+        self.assertEqual(analyser_gadget("batmobile"), "Le moyen de transport le plus cool et le moins discret pour naviguer dans Gotham. Attention aux bouchons !")
+        self.assertEqual(analyser_gadget("inconnu"), "Gadget inconnu. Alfred, on a du travail !")
+ 
+    def test_count_gadgets(self):
+        with open("bat_registre_test.txt", "w") as fichier_test:
+            fichier_test.write('grappin\nbatmobile\nalfredcap\nbatarang\nbatCaveCommande\ngrappin\nbatmobile\nbatmobile\n')
+
+        gadget_counts = count_gadgets('bat_registre_test.txt')
+        os.remove("bat_registre_test.txt")
+        self.assertIsInstance(gadget_counts, dict)
+        for gadget, occurrences in gadget_counts.items():
+            self.assertIsInstance(gadget, str)
+            self.assertIsInstance(occurrences, int)
+        self.assertEqual(gadget_counts.get("grappin"), 2)
+        self.assertEqual(gadget_counts.get("batarang"), 1)
+        self.assertEqual(gadget_counts.get("batmobile"), 3)
+        self.assertIsNone(gadget_counts.get("jokerbox"))
+        self.assertIsNone(gadget_counts.get(''))
+    
+    @patch('builtins.input', side_effect=['oui', 'non', 'quit'])
+    @patch('sys.stdout', new_callable=io.StringIO)
+    def test_bat_signal(self, mock_stdout, mock_input):
+        bat_signal()
+        output = mock_stdout.getvalue()
+        self.assertIn("Batman est en route !", output)
+        self.assertIn("Gotham est en sécurité pour le moment.", output)
+        self.assertIn("Batman prend une pause-café.", output)
+
+    def test_ajouter_gadget(self):
+        ajouter_gadget("jokerbox", "Un gadget diabolique utilisé par le Joker.")
+        self.assertEqual(descriptions.get("jokerbox"), "Un gadget diabolique utilisé par le Joker.")
+
+    def test_supprimer_gadget(self):
+        supprimer_gadget("grappin")
+        self.assertNotIn("grappin", descriptions)
+
+    def test_modifier_gadget(self):
+        modifier_gadget("batarang", "Idéal pour désarmer les méchants, ou couper la pizza les samedis soirs.")
+        self.assertEqual(descriptions.get("batarang"), "Idéal pour désarmer les méchants, ou couper la pizza les samedis soirs.")
+
+    def test_afficher_gadgets(self):
+        with patch('sys.stdout', new_callable=io.StringIO) as mock_stdout:
+            afficher_gadgets()
+            output = mock_stdout.getvalue()
+            self.assertIn("grappin : Parfait pour escalader les gratte-ciel de Gotham ou attraper un sandwich dans le frigo à distance.", output)
+            self.assertIn("batarang : Idéal pour désarmer les méchants, ou couper la pizza les vendredis soirs.", output)
+            self.assertIn("batmobile : Le moyen de transport le plus cool et le moins discret pour naviguer dans Gotham. Attention aux bouchons !", output)
 
 
 # LANCEMENT DE L'INTERFACE
