@@ -176,6 +176,7 @@ def interface():
         interface()
 
 
+## TEST UNITAIRES
 class TestExamBlanc23(unittest.TestCase):
 
     def test_analyser_gadget(self):
