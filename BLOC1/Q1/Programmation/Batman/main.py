@@ -17,7 +17,7 @@ Comment gagner des points ? En leur montrant ce que tu sais faire: Ouverture de 
 - Le code ne doit surtout pas planter, d'où le but de gérer les erreurs et les entrées de l'utilisateur.
 - Éviter les boucles infinies, sauf si c'est nécessaire. Dans ce cas ci, c'est nécessaire dans la fonction bat_signal (demandé dans l'énoncé).
 - Commenter ton code pour expliquer ce que tu fais.
-- Faire des tests unitaires (je les ajouterai bientot sur github)
+- Faire des tests unitaires
 
 
 Me contacter: 
