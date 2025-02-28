@@ -42,15 +42,26 @@ def scan_compagnon(nom:str):
     # Si le compagnon est présent dans le dictionnaire, on propose de modifier sa description
     if nom in dictio_compagnon:
         print("Le compagnon est présent")
-        choix_descri = str(input("Voulez-vous changer la description du compagnon? Tapez 'Oui' ou 'Non'"))
+        print("Voulez-vous changer la description du compagnon ou supprimer le compagnon?")
+        choix_descri = int(input("Tapez '1' pour modifier la description, '2' pour supprimer le compagnon ou 3 pour quitter le programme: "))
 
         # Proposition de modifier la description
-        if choix_descri.lower() == "oui":
+        if choix_descri == 1:
             description_compagnon = str(input("Veuillez décrire le compagnon: "))
             dictio_compagnon[nom] = description_compagnon
             print(f"La description de {nom} a été modifiée avec succès: {description_compagnon}")
+
+        elif choix_descri == 2:
+            del dictio_compagnon[nom]
+            print(f"Le compagnon: {nom} a été supprimé avec succès")
+
+        elif choix_descri == 3:
+            print("Le compagnon n'a pas été modifié, ni supprimé")
+
         else:
-            print(f"La description de {dictio_compagnon[nom]} n'a pas été modifiée")
+            print("Mauvaise valeur entrée, veuillez entrer '1' ou '2' ou '3'")
+            nom = str(input("Veuillez entrer le nom du compagnon: "))
+            scan_compagnon(nom)
 
     # Si le compagnon n'est pas présent dans le dictionnaire, on l'ajoute et demande de rentrer une description
     else:
