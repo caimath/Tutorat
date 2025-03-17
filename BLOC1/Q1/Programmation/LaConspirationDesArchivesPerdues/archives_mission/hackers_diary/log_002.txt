@@ -1,0 +1,2 @@
+Day 3: Remember, the key is hidden in the obvious.
+Day 4: Tested UTF-16 encoding for added security.

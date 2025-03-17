@@ -1,0 +1,2 @@
+To secure the archives, shift every character forward by 3.
+Never leave plain text data in top_secret files.
