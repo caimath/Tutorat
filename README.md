@@ -17,5 +17,5 @@ Il y a différents exams blancs à réaliser dans cet ordre de préférence:
 ## Contact
 Pour toute question ou demande de tutorat, vous pouvez me contacter :
 * **Mail**: mathias.carsault@std.heh.be
-* **LinkedIn**: [Carsault Mathias](www.linkedin.com/in/mathias-c-680646309)
+* **LinkedIn**: [Carsault Mathias](https://www.linkedin.com/in/mathias-c-680646309/)
 * **Discord**: caimath.
