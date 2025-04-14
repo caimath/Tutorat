@@ -17,6 +17,9 @@ git remote add origin URL_du_depot(en.git)
 ```
 
 Si on ne peut pas push parce qu'il y a une erreur, c'est peut-être que des modifications réalisées sur la branche distante ne sont pas dans ton repo local
+
 ```bash
 git pull origin [branche]
 ```
+
+<img src="img/FailedToPushRef.png" alt="Erreur failed to push some refs" width="50%">

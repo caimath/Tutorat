@@ -14,4 +14,4 @@
 * Mettre un message de commit et une description
 * Cliquer sur commit to main
 
-<img src="img/CommitGUI.png" width="50%" alt="Tuto GitHub Desktop">  
+<img src="img/CommitGUI.png" width="50%" alt="Tuto GitHub Desktop" width="50%">  
