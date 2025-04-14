@@ -66,7 +66,34 @@ Les [] sont à remplacer par le contenu.
 
 * Ajout d'un fichier ".gitignore" -> Permet de ne pas ajoute de fichiers inutiles ou sensibles, dossiers. Exemple: .venv/, .vscode/, log,...  
 * Ajout d'un README.md qui explique le projet, l'installation,...
-* Utiliser des conventions de nommage pour les branches, fichiers, messages de commit,... (Sera détaillé plus tard)
+* Utiliser des conventions de nommage pour les branches, fichiers, messages de commit,...
+
+### Conventions de nommage
+
+#### Convention de nommage pour les branches
+
+* develop : branche d’intégration où toutes les fonctionnalités terminées sont fusionnées.
+
+* feature/[nom] : pour chaque fonctionnalité (ex : feature/detection-obstacle)
+
+* bugfix/[nom] : pour les corrections de bugs.
+
+* hotfix/[nom] : pour corriger un bug urgent sur main (peu probable dans ton cas).
+
+* test/[nom] : pour expérimenter ou tester une fonctionnalité sensible (optionnel).
+
+#### Convention de nommage pour les commit
+
+* feat : Commits qui ajoutent ou suppriment une nouvelle fonctionnalité
+* fix : Commits qui corrigent un bug introduit par un commit de type feat
+* refactor : Commits qui réécrivent ou restructurent le code sans modifier le comportement de l’API ou de l’interface utilisateur
+* perf : Commits de refactorisation qui améliorent les performances
+* style : Commits qui n’affectent pas le fonctionnement (espaces, mise en forme, points-virgules manquants, etc.)
+* test : Commits qui ajoutent des tests manquants ou corrigent des tests existants
+* docs : Commits qui ne concernent que la documentation
+* build : Commits qui affectent les composants de compilation comme les outils de build, pipelines CI, dépendances, version du projet, etc.
+* ops : Commits qui affectent les composants opérationnels comme l’infrastructure, le déploiement, les sauvegardes, la reprise, etc.
+* chore : Commits divers, qui n'apporte pas de modifications au code. Par exemple la modification du fichier .gitignore, readme,...
 
 ## Github
 
