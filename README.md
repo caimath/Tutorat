@@ -15,6 +15,8 @@ Il y a différents exams blancs à réaliser dans cet ordre de préférence:
 
 ## Git & GitHub
 1. [Explication de Git & GitHub](https://github.com/caimath/Tutorat/blob/main/Git/Git.md)
+2. [Tuto git CLI](https://github.com/caimath/Tutorat/blob/main/Git/TutoCLI.md)
+3. [Tuto GitHub Desktop](https://github.com/caimath/Tutorat/blob/main/Git/TutoGUI.md)
 
 
 ## Contact
