@@ -27,6 +27,9 @@ class TestBibliotheque(unittest.TestCase):
 
     def test_deja_emprunter_livre(self):
         self.bibliotheque.emprunter_livre("Savoir coder en 2h", "Alice") # Simuler un emprunt
+        
+        # Autre manière de simuler un emprunt
+        # self.bibliotheque.emprunts["Alice"] = "Les TU pour les Nuls"
 
         # Simuler un autre emprunt par le même utilisateur
         result = self.bibliotheque.emprunter_livre("Les TU pour les Nuls", "Alice")
