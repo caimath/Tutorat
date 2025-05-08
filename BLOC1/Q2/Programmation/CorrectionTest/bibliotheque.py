@@ -36,6 +36,7 @@ class bibliotheque:
             return "Livre introuvable."
         return self.stock.get(livre, 0) > 0
 
-    def afficher_stock(self):
-        for livre in self.stock:
-            print(f"{livre} : {self.stock[livre]}")      
+    def afficher_stock(self, livre):
+        if livre not in self.stock:
+            return "Livre inexistant."
+        return f"Il reste {self.stock[livre]} exemplaires de {livre}."       

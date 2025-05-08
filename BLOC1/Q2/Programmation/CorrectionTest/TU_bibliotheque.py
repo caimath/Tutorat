@@ -63,5 +63,15 @@ class TestBibliotheque(unittest.TestCase):
         expected = "Livre introuvable."
         self.assertEqual(result, expected)
 
+    def test_afficher_stock_livre_existant(self):
+        result = self.bibliotheque.afficher_stock("Savoir coder en 2h")
+        expected = "Il reste 5 exemplaires de Savoir coder en 2h."
+        self.assertEqual(result, expected)
+
+    def test_afficher_stock_livre_inexistant(self):
+        result = self.bibliotheque.afficher_stock("Livre pas dans la liste")
+        expected = "Livre inexistant."
+        self.assertEqual(result, expected)
+
 if __name__ == '__main__':
     unittest.main()
