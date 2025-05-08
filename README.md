@@ -17,7 +17,7 @@ Il y a différents exams blancs à réaliser dans cet ordre de préférence:
 
 ### Q2
 
-1. [Correction Test TU première](https://github.com/caimath/Tutorat/tree/main/BLOC1/Q2/Programmation/CorrectionTest) --> Correction du test que les premières ont réalisés.
+1. [Correction Test TU première](BLOC1/Q2/Programmation/CorrectionTest/ExpliTestTU.md) --> Correction du test que les premières ont réalisés.
 
 ## Git & GitHub
 1. [Explication de Git & GitHub](https://github.com/caimath/Tutorat/blob/main/Git/Git.md)
